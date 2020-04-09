@@ -26,9 +26,9 @@ const SearchScreen = () => {
         {errorMessage ? <Text>{errorMessage}</Text> : null}
       </Text>
       <ScrollView>
-        <List results={filterPrice("$")} title="Cost Effective" />
-        <List results={filterPrice("$$")} title="Pricier" />
-        <List results={filterPrice("$$$")} title="BIg Spender" />
+        <List results={filterPrice("$")} title="$" />
+        <List results={filterPrice("$$")} title="$$" />
+        <List results={filterPrice("$$$")} title="$$$" />
       </ScrollView>
     </View>
   );
