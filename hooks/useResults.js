@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/yelp";
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
       });
       setResults(res.data.businesses);
     } catch (err) {
-      setErrorMessage("Oops, something went wrong!");
+      setErrorMessage("Oops, something went wrong :( ");
     }
   };
 
