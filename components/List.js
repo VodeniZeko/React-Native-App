@@ -4,10 +4,10 @@ import ListDetails from "./ListDetails";
 const List = ({ title, results }) => {
   return (
     <View style={styles.view}>
-      <View style={styles.innerView}>
-        <Text style={styles.text}>{title}</Text>
-      </View>
+      <Text style={styles.text}>{title}</Text>
+
       <FlatList
+        showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={results}
         keyExtractor={each => each.id}
@@ -23,13 +23,12 @@ const styles = StyleSheet.create({
   view: {
     flex: 1
   },
-  innerView: {
-    flex: 0.9
-  },
   text: {
     fontSize: 18,
     fontWeight: "bold",
-    marginLeft: 15
+    marginLeft: 15,
+    paddingTop: 5,
+    paddingBottom: 5
   }
 });
 export default List;
