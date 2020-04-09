@@ -35,7 +35,7 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
   view: {
     alignSelf: "center",
-    backgroundColor: "yellow",
+    backgroundColor: "#fff",
     flex: 1
   },
   header: {

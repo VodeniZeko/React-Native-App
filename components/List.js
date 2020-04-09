@@ -21,16 +21,15 @@ const List = ({ title, results }) => {
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: "white",
     flex: 1
   },
   innerView: {
-    backgroundColor: "red",
     flex: 0.9
   },
   text: {
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginLeft: 15
   }
 });
 export default List;
