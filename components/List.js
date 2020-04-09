@@ -1,13 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import ListDetails from "./ListDetails";
 const List = ({ title, results }) => {
   return (
     <View style={styles.view}>
       <View style={styles.innerView}>
         <Text style={styles.text}>{title}</Text>
       </View>
-      <Text>{results.length}</Text>
+      <FlatList
+        horizontal={true}
+        data={results}
+        keyExtractor={each => each.id}
+        renderItem={({ item }) => {
+          return <ListDetails results={item} />;
+        }}
+      />
     </View>
   );
 };
