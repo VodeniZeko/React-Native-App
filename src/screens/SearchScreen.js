@@ -4,7 +4,7 @@ import SearchBar from "../../components/Searchbar";
 import useResults from "../../hooks/useResults";
 import List from "../../components/List";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [term, setTerm] = useState("");
   //custom hook below
   const [searchApi, results, errorMessage] = useResults();
@@ -16,7 +16,7 @@ const SearchScreen = () => {
   };
   return (
     <View style={styles.view}>
-      <Text style={styles.header}>Business Search</Text>
+      {/* <Text style={styles.header}>Business Search</Text> */}
       <SearchBar
         term={term}
         onTermChange={newTerm => setTerm(newTerm)}
@@ -25,10 +25,24 @@ const SearchScreen = () => {
       <Text style={styles.err}>
         {errorMessage ? <Text>{errorMessage}</Text> : null}
       </Text>
+
       <ScrollView>
-        <List results={filterPrice("$")} title="$" />
-        <List results={filterPrice("$$")} title="$$" />
-        <List results={filterPrice("$$$")} title="$$$" />
+        <List
+          navigation={navigation}
+          results={filterPrice("$")}
+          title="Pricey."
+        />
+        <List
+          navigation={navigation}
+          results={filterPrice("$$")}
+          title="Pricier.."
+        />
+        <List
+          navigation={navigation}
+          results={filterPrice("$$$")}
+          title="Priciest...
+        "
+        />
       </ScrollView>
     </View>
   );
