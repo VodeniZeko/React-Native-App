@@ -27,9 +27,19 @@ export default function App() {
         <RootStack.Screen
           name="Business Search"
           component={MainStackScreen}
-          options={{ headerShown: true }}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#f4511e"
+            },
+            headerTitleStyle: {
+              fontWeight: "bold"
+              // fontSize: 30
+              // fontFamily: "Savoye LET"
+            }
+          }}
         />
-        <RootStack.Screen name="MyModal" component={ModalScreen} />
+        <RootStack.Screen name="Images" component={ModalScreen} />
         <RootStack.Screen name="Details" component={DetailsScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
