@@ -11,12 +11,12 @@ import { AntDesign } from "@expo/vector-icons";
 export default function ModalScreen({ navigation }) {
   return (
     <View style={styles.view}>
-      <Text style={{ fontSize: 30 }}>Here we can habe more details!</Text>
+      <Text style={{ fontSize: 30 }}>Here we have full screen images!</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate("Home")}
         style={styles.icon}
       >
-        <AntDesign name="home" size={30} />
+        <AntDesign style={{ color: "#f4511e" }} name="home" size={30} />
       </TouchableOpacity>
     </View>
   );

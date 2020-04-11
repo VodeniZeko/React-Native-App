@@ -27,22 +27,9 @@ const SearchScreen = ({ navigation }) => {
       </Text>
 
       <ScrollView>
-        <List
-          navigation={navigation}
-          results={filterPrice("$")}
-          title="Pricey."
-        />
-        <List
-          navigation={navigation}
-          results={filterPrice("$$")}
-          title="Pricier.."
-        />
-        <List
-          navigation={navigation}
-          results={filterPrice("$$$")}
-          title="Priciest...
-        "
-        />
+        <List results={filterPrice("$")} title="Cost Effective" />
+        <List results={filterPrice("$$")} title="Moderate" />
+        <List results={filterPrice("$$$")} title="Go all out" />
       </ScrollView>
     </View>
   );
@@ -55,7 +42,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    backgroundColor: "#f4511e",
     height: 80,
     textAlign: "center",
     paddingTop: 45
