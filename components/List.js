@@ -10,8 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import ListDetails from "./ListDetails";
 import Carousel from "react-native-snap-carousel";
 const SLIDER_WIDTH = Dimensions.get("window").width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
-const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
 
 const List = ({ title, results }) => {
   const navigation = useNavigation();

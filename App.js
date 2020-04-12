@@ -1,5 +1,4 @@
 import * as React from "react";
-import { View, Text, Button, StyleSheet, FlatList } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SearchScreen from "./src/screens/SearchScreen";

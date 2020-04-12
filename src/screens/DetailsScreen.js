@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  Button
+  Button,
+  ActivityIndicator
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -16,10 +17,12 @@ export default function DetailsScreen({ route }) {
   const navigation = useNavigation();
   const id = route.params.id;
   const [singleRestaurant, setSingleRestaurant] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getResults = async id => {
     const res = await axios.get(`/${id}`);
     setSingleRestaurant(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -31,15 +34,21 @@ export default function DetailsScreen({ route }) {
   }
   return (
     <View style={styles.view}>
-      <View>
-        <SingleRestaurantDetails results={singleRestaurant} />
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={styles.icon}
-      >
-        <AntDesign style={{ color: "#f4511e" }} name="home" size={30} />
-      </TouchableOpacity>
+      {loading ? (
+        <ActivityIndicator style={{ flex: 1 }} size="large" color="#f4511e" />
+      ) : (
+        <>
+          <View>
+            <SingleRestaurantDetails results={singleRestaurant} />
+          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Home")}
+            style={styles.icon}
+          >
+            <AntDesign style={{ color: "#f4511e" }} name="home" size={30} />
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
 }
