@@ -29,12 +29,13 @@ export default function App() {
           options={{
             headerShown: true,
             headerStyle: {
-              backgroundColor: "#f4511e"
+              // backgroundColor: "#f4511e"
             },
             headerTitleStyle: {
-              fontWeight: "bold"
-              // fontSize: 30
-              // fontFamily: "Savoye LET"
+              // fontWeight: "bold",
+              color: "#1DA1F2"
+              // fontSize: 20
+              // fontFamily: "Palatino"
             }
           }}
         />

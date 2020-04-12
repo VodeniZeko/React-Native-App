@@ -16,7 +16,7 @@ export default function ModalScreen({ navigation }) {
         onPress={() => navigation.navigate("Home")}
         style={styles.icon}
       >
-        <AntDesign style={{ color: "#f4511e" }} name="home" size={30} />
+        <AntDesign style={{ color: "#1DA1F2" }} name="home" size={30} />
       </TouchableOpacity>
     </View>
   );
