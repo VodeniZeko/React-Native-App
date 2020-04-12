@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import ModalScreen from "./src/screens/ModalScreen";
 import DetailsScreen from "./src/screens/DetailsScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
-
+import ReviewsScreen from "./src/screens/ReviewsScreen";
 const MainStack = createBottomTabNavigator();
 const RootStack = createStackNavigator();
 
@@ -40,7 +40,8 @@ export default function App() {
           }}
         />
         <RootStack.Screen name="Images" component={ModalScreen} />
-        <RootStack.Screen name="Details" component={DetailsScreen} />
+        <RootStack.Screen name="About" component={DetailsScreen} />
+        <RootStack.Screen name="Reviews" component={ReviewsScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

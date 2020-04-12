@@ -19,7 +19,7 @@ const List = ({ title, results }) => {
       <View style={styles.view}>
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("Details", {
+            navigation.navigate("About", {
               id: item.id
             })
           }

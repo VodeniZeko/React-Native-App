@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
   },
   loadMoreBtn: {
     padding: 7,
-    backgroundColor: "#f4511e",
+    marginBottom: 7,
+    backgroundColor: "#1DA1F2",
     borderRadius: 14,
     flexDirection: "row",
     justifyContent: "center",
@@ -89,8 +90,8 @@ const styles = StyleSheet.create({
     width: 100
   },
   btnText: {
-    color: "black",
-    fontSize: 15,
+    color: "white",
+    fontSize: 16,
     textAlign: "center"
   }
 });

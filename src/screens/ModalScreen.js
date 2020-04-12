@@ -1,17 +1,31 @@
-import * as React from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity
-} from "react-native";
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
 import { AntDesign } from "@expo/vector-icons";
-export default function ModalScreen({ navigation }) {
+import { useNavigation } from "@react-navigation/native";
+
+export default function ModalScreen(props) {
+  const img = props.route.params.image;
+  const navigation = useNavigation();
   return (
-    <View style={styles.view}>
-      <Text style={{ fontSize: 30 }}>Here we have full screen images!</Text>
+    <View style={{ flex: 1 }}>
+      <ReactNativeZoomableView
+        maxZoom={2}
+        minZoom={0.9}
+        zoomStep={2}
+        initialZoom={1}
+        bindToBorders={true}
+        // onZoomAfter={logOutZoomState}
+        style={styles.image}
+      >
+        <View style={styles.view}>
+          <Image
+            style={{ flex: 1, width: null, height: "100%" }}
+            source={{ uri: img }}
+            resizeMode="contain"
+          />
+        </View>
+      </ReactNativeZoomableView>
       <TouchableOpacity
         onPress={() => navigation.navigate("Home")}
         style={styles.icon}
@@ -24,8 +38,9 @@ export default function ModalScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
-    justifyContent: "space-between"
+    padding: 10,
+    marginBottom: 50,
+    flex: 1
   },
   icon: {
     alignItems: "center",
