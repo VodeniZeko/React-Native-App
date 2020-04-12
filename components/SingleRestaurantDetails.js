@@ -123,7 +123,11 @@ const SingleRestaurantDetails = ({ results }) => {
         </View>
         <View>
           <View style={{ alignItems: "center" }}>
-            <Text style={styles.address}>Address</Text>
+            <Entypo
+              style={{ paddingTop: 5, color: "blue", opacity: 0.4 }}
+              size={30}
+              name="location-pin"
+            />
             <Entypo name="chevron-down" />
             <Text style={styles.addressInfo}>
               {results.location.display_address[0]}
@@ -136,7 +140,12 @@ const SingleRestaurantDetails = ({ results }) => {
             </Text>
           </View>
           <View style={{ alignItems: "center" }}>
-            <Text style={styles.phone}>Phone</Text>
+            <Entypo
+              style={{ paddingTop: 5, color: "green", opacity: 0.4 }}
+              size={30}
+              name="phone"
+            />
+            {/* <Text style={styles.phone}>Phone</Text> */}
             <Entypo name="chevron-down" />
             <Text style={styles.addressInfo}>{results.display_phone}</Text>
           </View>
@@ -145,11 +154,12 @@ const SingleRestaurantDetails = ({ results }) => {
               justifyContent: "space-around",
               alignItems: "baseline",
               flexDirection: "row",
-              backgroundColor: "#e9e9e9"
+              backgroundColor: "#e9e9e9",
+              marginTop: 10
             }}
           >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={styles.hours}>Hours</Text>
+              <Entypo style={styles.hours} size={30} name="clock" />
               <Entypo name="chevron-right" />
             </View>
             <View style={{ width: 100 }}>{/* <Dropdown data={} /> */}</View>
@@ -164,8 +174,8 @@ const styles = StyleSheet.create({
     height: ITEM_HEIGHT
   },
   infoView: {
-    borderWidth: 0.17,
-    borderColor: "#1DA1F2",
+    // borderWidth: 0.17,
+    // borderColor: "#1DA1F2",
     marginTop: 15,
     marginLeft: 5,
     marginRight: 5
@@ -196,31 +206,20 @@ const styles = StyleSheet.create({
     fontFamily: "Avenir-Oblique",
     fontSize: 15,
     padding: 5,
-    opacity: 0.8
-  },
-  address: {
-    fontFamily: "AvenirNext-Heavy",
-    fontSize: 18,
-    paddingTop: 5,
-    fontWeight: "bold"
-  },
-  phone: {
-    fontFamily: "AvenirNext-Heavy",
-    fontSize: 18,
-    padding: 5,
+    opacity: 0.8,
     fontWeight: "bold"
   },
   hours: {
-    fontFamily: "AvenirNext-Heavy",
-    fontSize: 18,
+    // fontFamily: "AvenirNext-Heavy",
     padding: 5,
-    marginRight: 5,
-    fontWeight: "bold"
+    marginRight: 5
+    // fontWeight: "bold"
   },
   addressInfo: {
     fontFamily: "Avenir-MediumOblique",
     fontSize: 15,
-    paddingTop: 5
+    paddingTop: 5,
+    fontWeight: "bold"
   }
 });
 export default SingleRestaurantDetails;
