@@ -2,7 +2,7 @@ import React from "react";
 import { View, Dimensions, Text, StyleSheet, Image } from "react-native";
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH / 0.7);
-const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 1.4) / 7);
+const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 1.4) / 8);
 const ListDetails = ({ results }) => {
   return (
     <View>
@@ -29,16 +29,16 @@ const styles = StyleSheet.create({
     // borderWidth: 2
   },
   text: {
-    padding: 5
-    // fontFamily: "Palatino"
+    padding: 5,
+    fontFamily: "Palatino"
   },
   name: {
     fontSize: 15,
     width: 250,
     fontWeight: "bold",
     paddingTop: 5,
-    paddingBottom: 5
-    // fontFamily: "Palatino"
+    paddingBottom: 5,
+    fontFamily: "Palatino"
   }
 });
 export default ListDetails;
