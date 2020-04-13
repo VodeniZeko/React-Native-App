@@ -13,6 +13,9 @@ import { Entypo } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Carousel from "react-native-snap-carousel";
+import { Rating } from "react-native-elements";
+import { Tooltip } from "react-native-elements";
+
 // import { Dropdown } from "react-native-material-dropdown";
 //
 const SLIDER_WIDTH = Dimensions.get("window").width;
@@ -21,6 +24,8 @@ const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
 //
 const SingleRestaurantDetails = ({ results }) => {
   const navigation = useNavigation();
+  const { rating } = results;
+
   const _renderItem = ({ item }) => {
     return (
       <View>
@@ -65,11 +70,23 @@ const SingleRestaurantDetails = ({ results }) => {
         <Text style={styles.name}>{results.name}</Text>
 
         <View style={styles.smallInfoView}>
-          <Text style={styles.smallInfo}>{results.price}</Text>
+          <Tooltip popover={<Text>pricepoint</Text>}>
+            <Text style={(styles.smallInfo, { color: "green" })}>
+              {results.price}
+            </Text>
+          </Tooltip>
+
           <View style={{ flexDirection: "row" }}>
-            <Text style={styles.smallInfo}>{results.rating}</Text>
-            <EvilIcons name="star" size={20} style={{ color: "#FFA500" }} />
-            <Text>'s</Text>
+            <Text style={(styles.smallInfo, { color: "#e5ac44" })}>
+              {results.rating}
+            </Text>
+            <Rating
+              fractions={1}
+              imageSize={15}
+              readonly
+              startingValue={rating}
+              style={{ paddingLeft: 5 }}
+            />
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("Reviews", { id: results.id })}
@@ -244,7 +261,7 @@ const styles = StyleSheet.create({
   smallInfoView: {
     alignSelf: "center",
     flexDirection: "row",
-    width: 200,
+    width: 250,
     justifyContent: "space-around",
     padding: 10,
     marginTop: 5,
@@ -252,9 +269,7 @@ const styles = StyleSheet.create({
   },
   smallInfo: {
     fontSize: 15,
-    fontFamily: "Palatino",
-    fontWeight: "bold",
-    opacity: 0.7
+    fontFamily: "Palatino"
   },
   delivery: {
     fontFamily: "Avenir-Oblique",
