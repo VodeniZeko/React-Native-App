@@ -8,7 +8,7 @@ import {
   Button,
   ActivityIndicator
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "../../api/yelp";
 import SingleRestaurantDetails from "../../components/SingleRestaurantDetails";
@@ -35,7 +35,7 @@ export default function DetailsScreen({ route }) {
   return (
     <View style={styles.view}>
       {loading ? (
-        <ActivityIndicator style={{ flex: 1 }} size="large" color="#f4511e" />
+        <ActivityIndicator style={{ flex: 1 }} color="#1DA1F2" />
       ) : (
         <>
           <View>
@@ -45,7 +45,7 @@ export default function DetailsScreen({ route }) {
             onPress={() => navigation.navigate("Home")}
             style={styles.icon}
           >
-            <AntDesign style={{ color: "#1DA1F2" }} name="home" size={30} />
+            <FontAwesome style={{ color: "#1DA1F2" }} name="home" size={30} />
           </TouchableOpacity>
         </>
       )}
