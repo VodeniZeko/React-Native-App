@@ -22,7 +22,7 @@ const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
 //
-const SingleRestaurantDetails = ({ results }) => {
+const SingleRestaurantDetails = ({ priceText, results }) => {
   const navigation = useNavigation();
   const { rating } = results;
 
@@ -70,7 +70,7 @@ const SingleRestaurantDetails = ({ results }) => {
         <Text style={styles.name}>{results.name}</Text>
 
         <View style={styles.smallInfoView}>
-          <Tooltip popover={<Text>pricepoint</Text>}>
+          <Tooltip popover={<Text>{priceText}</Text>}>
             <Text style={(styles.smallInfo, { color: "green" })}>
               {results.price}
             </Text>
@@ -80,13 +80,15 @@ const SingleRestaurantDetails = ({ results }) => {
             <Text style={(styles.smallInfo, { color: "#e5ac44" })}>
               {results.rating}
             </Text>
-            <Rating
-              fractions={1}
-              imageSize={15}
-              readonly
-              startingValue={rating}
-              style={{ paddingLeft: 5 }}
-            />
+            <Tooltip popover={<Text>average {results.rating} stars</Text>}>
+              <Rating
+                fractions={1}
+                imageSize={15}
+                readonly
+                startingValue={rating}
+                style={{ paddingLeft: 5 }}
+              />
+            </Tooltip>
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("Reviews", { id: results.id })}
@@ -242,11 +244,10 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 9
+      height: 2
     },
     shadowOpacity: 0.48,
     shadowRadius: 11.95,
-
     elevation: 18
   },
   tag: {
