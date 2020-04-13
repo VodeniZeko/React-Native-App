@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
-import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function ModalScreen(props) {
@@ -30,7 +30,7 @@ export default function ModalScreen(props) {
         onPress={() => navigation.navigate("Home")}
         style={styles.icon}
       >
-        <AntDesign style={{ color: "#1DA1F2" }} name="home" size={30} />
+        <FontAwesome style={{ color: "#1DA1F2" }} name="home" size={30} />
       </TouchableOpacity>
     </View>
   );

@@ -10,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import ListDetails from "./ListDetails";
 import Carousel from "react-native-snap-carousel";
 const SLIDER_WIDTH = Dimensions.get("window").width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.5);
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.53);
 
 const List = ({ title, results }) => {
   const navigation = useNavigation();
@@ -30,7 +30,7 @@ const List = ({ title, results }) => {
     );
   };
   return (
-    <View>
+    <View style={{ position: "relative" }}>
       <Text style={styles.text}>{title}</Text>
       <Carousel
         data={results}
@@ -47,11 +47,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   text: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "bold",
     marginLeft: 15,
-    paddingTop: 5,
-    paddingBottom: 5
+    padding: 5
     // fontFamily: "Savoye LET"
   }
 });

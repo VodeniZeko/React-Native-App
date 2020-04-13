@@ -47,7 +47,7 @@ export default () => {
     searchApi("beef");
   }, []);
   useEffect(() => {
-    searchNextApi("beef");
+    searchNextApi();
   }, []);
   return [
     searchApi,

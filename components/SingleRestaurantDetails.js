@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-
 import { useNavigation } from "@react-navigation/native";
 import Carousel from "react-native-snap-carousel";
 // import { Dropdown } from "react-native-material-dropdown";
@@ -34,94 +34,116 @@ const SingleRestaurantDetails = ({ results }) => {
   };
   return (
     <View style={styles.view}>
-      <View style={{ marginTop: 10, marginBottom: 10, alignItems: "center" }}>
-        <FlatList
-          horizontal={true}
-          data={results.categories}
-          keyExtractor={each => each.id}
-          renderItem={({ item }) => {
-            return <Text style={styles.tag}>#{item.title} </Text>;
-          }}
-        />
-      </View>
-      <View>
-        <Carousel
-          data={results.photos}
-          renderItem={_renderItem}
-          sliderWidth={SLIDER_WIDTH}
-          itemWidth={ITEM_WIDTH}
-        />
-      </View>
-      <View style={{ alignItems: "center" }}>
-        <Text style={{ fontSize: 30, fontFamily: "Palatino", paddingTop: 10 }}>
-          {results.name}
-        </Text>
-      </View>
-      <View style={styles.smallInfoView}>
-        <Text style={styles.smallInfo}>{results.price}</Text>
-        <View style={{ flexDirection: "row" }}>
-          <Text style={styles.smallInfo}>{results.rating}</Text>
-          <EvilIcons name="star" size={20} style={{ color: "#FFA500" }} />
-          <Text>'s</Text>
-        </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Reviews", { id: results.id })}
-          style={styles.smallInfo}
-        >
-          <Text style={{ color: "blue" }}>{results.review_count} reviews</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.infoView}>
-        <View style={{ alignItems: "center" }}>
-          {results.transactions.length === 0 ? (
-            <View style={{ flexDirection: "row" }}>
-              <Text style={styles.delivery}>
-                reservations
-                <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
-              </Text>
-              <Text style={styles.delivery}>
-                delivery
-                <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
-              </Text>
-              <Text style={styles.delivery}>
-                pickup
-                <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
-              </Text>
-            </View>
-          ) : (
-            <FlatList
-              horizontal={true}
-              data={results.transactions}
-              keyExtractor={transactions => transactions}
-              renderItem={({ item }) => {
-                return (
-                  <View>
-                    {item === "delivery" || item === "pickup" ? (
-                      <Text style={styles.delivery}>
-                        {item}
-                        <Entypo
-                          style={{ color: "green" }}
-                          name="check"
-                          size={27}
-                        />
-                      </Text>
-                    ) : null || item === "restaurant_reservation" ? (
-                      <Text style={styles.delivery}>
-                        reservations
-                        <Entypo
-                          style={{ color: "green" }}
-                          name="check"
-                          size={27}
-                        />
-                      </Text>
-                    ) : null}
-                  </View>
-                );
-              }}
-            />
-          )}
+      <ImageBackground
+        style={styles.backgroundImage}
+        source={require("../assets/restaurant.png")}
+      >
+        <View style={{ marginTop: 10, marginBottom: 10, alignItems: "center" }}>
+          <FlatList
+            horizontal={true}
+            data={results.categories}
+            keyExtractor={each => each.id}
+            renderItem={({ item }) => {
+              return (
+                <Text style={styles.tag}>
+                  <Text>#</Text>
+                  {item.title}
+                </Text>
+              );
+            }}
+          />
         </View>
         <View>
+          <Carousel
+            data={results.photos}
+            renderItem={_renderItem}
+            sliderWidth={SLIDER_WIDTH}
+            itemWidth={ITEM_WIDTH}
+          />
+        </View>
+
+        <Text style={styles.name}>{results.name}</Text>
+
+        <View style={styles.smallInfoView}>
+          <Text style={styles.smallInfo}>{results.price}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.smallInfo}>{results.rating}</Text>
+            <EvilIcons name="star" size={20} style={{ color: "#FFA500" }} />
+            <Text>'s</Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Reviews", { id: results.id })}
+            style={styles.smallInfo}
+          >
+            <Text style={(styles.smallInfo, { color: "blue" })}>
+              {results.review_count} reviews
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.infoView}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-around"
+            }}
+          >
+            {results.transactions.length === 0 ? (
+              <>
+                <Text style={styles.delivery}>
+                  reservations
+                  <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
+                </Text>
+                <Text style={styles.delivery}>
+                  delivery
+                  <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
+                </Text>
+                <Text style={styles.delivery}>
+                  pickup
+                  <Entypo name="cross" style={{ color: "#8b0000" }} size={22} />
+                </Text>
+              </>
+            ) : (
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-around"
+                }}
+              >
+                <FlatList
+                  horizontal={true}
+                  data={results.transactions}
+                  keyExtractor={transactions => transactions}
+                  renderItem={({ item }) => {
+                    return (
+                      <>
+                        {item === "delivery" || item === "pickup" ? (
+                          <Text style={styles.delivery}>
+                            {item}
+                            <Entypo
+                              style={{ color: "green" }}
+                              name="check"
+                              size={27}
+                            />
+                          </Text>
+                        ) : null || item === "restaurant_reservation" ? (
+                          <Text style={styles.delivery}>
+                            reservations
+                            <Entypo
+                              style={{ color: "green" }}
+                              name="check"
+                              size={27}
+                            />
+                          </Text>
+                        ) : null}
+                      </>
+                    );
+                  }}
+                />
+              </View>
+            )}
+          </View>
+
           <View style={{ alignItems: "center" }}>
             <Entypo
               style={{ paddingTop: 5, color: "blue", opacity: 0.4 }}
@@ -139,13 +161,14 @@ const SingleRestaurantDetails = ({ results }) => {
               {results.location.display_address[2]}
             </Text>
           </View>
+
           <View style={{ alignItems: "center" }}>
             <Entypo
               style={{ paddingTop: 5, color: "green", opacity: 0.4 }}
               size={30}
               name="phone"
             />
-            {/* <Text style={styles.phone}>Phone</Text> */}
+
             <Entypo name="chevron-down" />
             <Text style={styles.addressInfo}>{results.display_phone}</Text>
           </View>
@@ -165,20 +188,49 @@ const SingleRestaurantDetails = ({ results }) => {
             <View style={{ width: 100 }}>{/* <Dropdown data={} /> */}</View>
           </View>
         </View>
-      </View>
+      </ImageBackground>
     </View>
   );
 };
 const styles = StyleSheet.create({
   image: {
-    height: ITEM_HEIGHT
+    height: ITEM_HEIGHT,
+    borderRadius: 10
+  },
+  backgroundImage: {
+    resizeMode: "cover"
+  },
+  name: {
+    textAlign: "center",
+    fontSize: 30,
+    fontFamily: "Palatino",
+    paddingTop: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3
   },
   infoView: {
-    // borderWidth: 0.17,
-    // borderColor: "#1DA1F2",
+    borderWidth: 2,
+    borderColor: "white",
     marginTop: 15,
-    marginLeft: 5,
-    marginRight: 5
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 9
+    },
+    shadowOpacity: 0.48,
+    shadowRadius: 11.95,
+
+    elevation: 18
   },
   tag: {
     color: "#1DA1F2",
@@ -194,13 +246,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: 200,
     justifyContent: "space-around",
-    padding: 10
+    padding: 10,
+    marginTop: 5,
+    backgroundColor: "#fff"
   },
   smallInfo: {
     fontSize: 15,
     fontFamily: "Palatino",
     fontWeight: "bold",
-    opacity: 0.6
+    opacity: 0.7
   },
   delivery: {
     fontFamily: "Avenir-Oblique",
@@ -210,16 +264,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   hours: {
-    // fontFamily: "AvenirNext-Heavy",
     padding: 5,
     marginRight: 5
-    // fontWeight: "bold"
   },
   addressInfo: {
     fontFamily: "Avenir-MediumOblique",
     fontSize: 15,
-    paddingTop: 5,
-    fontWeight: "bold"
+    padding: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3
   }
 });
 export default SingleRestaurantDetails;

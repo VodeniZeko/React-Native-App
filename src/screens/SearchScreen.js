@@ -37,14 +37,14 @@ const SearchScreen = ({ navigation }) => {
         onTermChange={newTerm => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
       />
-      <Text style={styles.err}>
-        {errorMessage ? <Text>{errorMessage}</Text> : null}
+      <Text>
+        {errorMessage ? <Text style={styles.err}>{errorMessage}</Text> : null}
       </Text>
 
       {loading ? (
         <ActivityIndicator style={{ flex: 1 }} size="large" color="#f4511e" />
       ) : (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <List results={filterPrice("$")} title="Cost Effective" />
           <List results={filterPrice("$$")} title="Moderate" />
           <List results={filterPrice("$$$")} title="Go all out" />
@@ -57,7 +57,7 @@ const SearchScreen = ({ navigation }) => {
           style={styles.loadMoreBtn}
         >
           {fetchingData ? (
-            <ActivityIndicator color="white" />
+            <ActivityIndicator color="#1DA1F2" />
           ) : (
             <Text style={styles.btnText}>Load More</Text>
           )}
@@ -82,15 +82,14 @@ const styles = StyleSheet.create({
   loadMoreBtn: {
     padding: 7,
     marginBottom: 7,
-    backgroundColor: "#1DA1F2",
-    borderRadius: 14,
+    borderRadius: 10,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     width: 100
   },
   btnText: {
-    color: "white",
+    color: "#1DA1F2",
     fontSize: 16,
     textAlign: "center"
   }
