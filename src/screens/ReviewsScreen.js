@@ -2,32 +2,33 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Image,
-  Button,
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  ImageBackground
+  ImageBackground,
+  ScrollView
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "../../api/yelp";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
 import LeaveAppModal from "../../components/leaveAppModal";
+// import { Tooltip } from "react-native-elements";
+
 export default function ReviewsScreen(props) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const id = props.route.params.id;
   const url = reviews[0];
-  console.log(url);
   const navigation = useNavigation();
+
   useEffect(() => {
     axios.get(`${id}/reviews`).then(res => {
       setReviews(res.data.reviews);
     });
     setLoading(false);
   }, []);
-  console.log("yupyupyu", url);
+
   return (
     <View style={styles.view}>
       <ImageBackground
@@ -45,23 +46,21 @@ export default function ReviewsScreen(props) {
                 <ListItem
                   leftAvatar={{
                     size: "large",
-                    showEditButton: true,
                     source: { uri: item.user.image_url }
                   }}
                   containerStyle={{
-                    backgroundColor: "transparent",
-                    margin: 10
+                    backgroundColor: "transparent"
                   }}
                   title={item.user.name}
                   titleStyle={{ fontSize: 15, paddingBottom: 5 }}
                   subtitle={item.text}
-                  subtitleStyle={{ fontWeight: "bold", fontSize: 16 }}
+                  subtitleStyle={{ fontWeight: "bold", fontSize: 15 }}
                 />
               );
             }}
           />
         )}
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 6 }}>
           {!url ? null : <LeaveAppModal web={url} />}
         </View>
         <TouchableOpacity

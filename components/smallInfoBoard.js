@@ -56,10 +56,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     padding: 10,
     marginTop: 5,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    borderRadius: 5
   },
   smallInfo: {
-    fontSize: 15
+    fontSize: 16
+
     // fontFamily: "Palatino"
   }
 });

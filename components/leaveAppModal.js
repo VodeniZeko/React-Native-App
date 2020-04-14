@@ -11,7 +11,7 @@ const LeaveAppModal = ({ web }) => {
   return (
     <View>
       <TouchableOpacity onPress={onOpen}>
-        <Text style={{ fontSize: 20, textAlign: "center", fontWeight: "100" }}>
+        <Text style={{ textAlign: "center", fontWeight: "100" }}>
           Click on
           <Entypo style={{ color: "#CC0000" }} size={60} name="yelp" /> for more
           reviews...

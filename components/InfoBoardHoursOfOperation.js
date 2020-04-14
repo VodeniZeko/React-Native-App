@@ -9,7 +9,7 @@ const InfoBoardHoursOfOperation = ({ results }) => {
     <View style={styles.view}>
       <View
         style={{
-          flexDirection: "row",
+          // flexDirection: "row",
           alignItems: "center"
         }}
       >
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   hours: {
     padding: 2,
     marginRight: 2
+    // paddingLeft: 44
   }
 });
 export default InfoBoardHoursOfOperation;
