@@ -7,19 +7,19 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  ImageBackground,
-  Linking
+  ImageBackground
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 import axios from "../../api/yelp";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
-
+import LeaveAppModal from "../../components/leaveAppModal";
 export default function ReviewsScreen(props) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const id = props.route.params.id;
+  const url = reviews[0];
+  console.log(url);
   const navigation = useNavigation();
   useEffect(() => {
     axios.get(`${id}/reviews`).then(res => {
@@ -27,7 +27,7 @@ export default function ReviewsScreen(props) {
     });
     setLoading(false);
   }, []);
-  // console.log("1232132131313", reviews.length);
+  console.log("yupyupyu", url);
   return (
     <View style={styles.view}>
       <ImageBackground
@@ -45,6 +45,7 @@ export default function ReviewsScreen(props) {
                 <ListItem
                   leftAvatar={{
                     size: "large",
+                    showEditButton: true,
                     source: { uri: item.user.image_url }
                   }}
                   containerStyle={{
@@ -61,15 +62,7 @@ export default function ReviewsScreen(props) {
           />
         )}
         <View style={{ flex: 1 }}>
-          <TouchableOpacity onPress={() => Linking.openURL(reviews[0].url)}>
-            <Text
-              style={{ fontSize: 20, textAlign: "center", fontWeight: "100" }}
-            >
-              Click on
-              <Entypo style={{ color: "#CC0000" }} size={60} name="yelp" /> for
-              more reviews...
-            </Text>
-          </TouchableOpacity>
+          {!url ? null : <LeaveAppModal web={url} />}
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate("Home")}
