@@ -13,6 +13,13 @@ const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.53);
 
 const List = ({ title, results }) => {
+  if (!results.length) {
+    return (
+      <View>
+        <Text style={styles.empty}>{title}</Text>
+      </View>
+    );
+  }
   const navigation = useNavigation();
   const _renderItem = ({ item }) => {
     return (
@@ -32,6 +39,7 @@ const List = ({ title, results }) => {
   return (
     <View style={{ position: "relative" }}>
       <Text style={styles.text}>{title}</Text>
+
       <Carousel
         data={results}
         renderItem={_renderItem}
@@ -52,6 +60,14 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     padding: 5
     // fontFamily: "Savoye LET"
+  },
+  empty: {
+    fontSize: 15,
+    fontWeight: "bold",
+    marginLeft: 15,
+    padding: 5,
+    textDecorationLine: "line-through",
+    textDecorationColor: "red"
   }
 });
 export default List;
