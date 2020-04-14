@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
   addressInfo: {
     // fontFamily: "Avenir-MediumOblique",
     fontSize: 15,
-    padding: 5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

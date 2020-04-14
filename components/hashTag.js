@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-
+import * as Animatable from "react-native-animatable";
 const HashTag = ({ results }) => {
   return (
-    <View style={styles.view}>
+    <Animatable.View style={styles.view} animation="fadeInLeft">
       <FlatList
         horizontal={true}
         data={results.categories}
@@ -17,7 +17,7 @@ const HashTag = ({ results }) => {
           );
         }}
       />
-    </View>
+    </Animatable.View>
   );
 };
 

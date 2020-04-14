@@ -30,12 +30,12 @@ const InfoBoardHoursOfOperation = ({ results }) => {
 const styles = StyleSheet.create({
   view: {
     alignItems: "center",
-    backgroundColor: "#e9e9e9",
-    marginTop: 10
+    // backgroundColor: "#e9e9e9",
+    margin: 10
   },
   hours: {
-    padding: 5,
-    marginRight: 5
+    padding: 2,
+    marginRight: 2
   }
 });
 export default InfoBoardHoursOfOperation;

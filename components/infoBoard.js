@@ -1,4 +1,5 @@
 import React from "react";
+import * as Animatable from "react-native-animatable";
 import { View, StyleSheet } from "react-native";
 import InfoBoardTransactions from "./infoBoardTransactions";
 import InfoBoardLocation from "./infoBoardLocation";
@@ -8,33 +9,25 @@ import InfoBoardHoursOfOperation from "./InfoBoardHoursOfOperation";
 const InfoBoard = ({ results }) => {
   // console.log("again",results.hours[0].open);
   return (
-    <View style={styles.infoView}>
+    <Animatable.View animation="fadeInRight" style={styles.infoView}>
       <InfoBoardTransactions results={results} />
 
       <InfoBoardLocation results={results} />
 
       <InfoBoardPhone results={results} />
       <InfoBoardHoursOfOperation results={results} />
-    </View>
+    </Animatable.View>
   );
 };
 
 const styles = StyleSheet.create({
   infoView: {
-    borderWidth: 2,
-    borderColor: "white",
+    borderWidth: 0.6,
+    borderColor: "#000",
     marginTop: 15,
     marginLeft: 15,
     marginRight: 15,
-    borderRadius: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.48,
-    shadowRadius: 11.95,
-    elevation: 18
+    borderRadius: 5
   }
 });
 export default InfoBoard;

@@ -8,6 +8,7 @@ import {
   Dimensions,
   ImageBackground
 } from "react-native";
+import * as Animatable from "react-native-animatable";
 import HashTag from "./hashTag";
 import SmallInfoBoard from "./smallInfoBoard";
 import InfoBoard from "./infoBoard";
@@ -40,6 +41,7 @@ const SingleRestaurantDetails = ({ priceText, results }) => {
         source={require("../assets/restaurant.png")}
       >
         <HashTag results={results} />
+
         <View>
           <Carousel
             data={results.photos}
@@ -49,7 +51,9 @@ const SingleRestaurantDetails = ({ priceText, results }) => {
           />
         </View>
 
-        <Text style={styles.name}>{results.name}</Text>
+        <Animatable.Text animation="fadeInRight" style={styles.name}>
+          {results.name}
+        </Animatable.Text>
 
         <SmallInfoBoard priceText={priceText} results={results} />
         <InfoBoard results={results} />
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1
+      height: 2
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,

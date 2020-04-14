@@ -1,4 +1,5 @@
 import React from "react";
+import * as Animatable from "react-native-animatable";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Rating } from "react-native-elements";
@@ -8,7 +9,7 @@ const SmallInfoBoard = ({ priceText, results }) => {
   const navigation = useNavigation();
   const { rating } = results;
   return (
-    <View style={styles.smallInfoView}>
+    <Animatable.View animation="fadeInLeft" style={styles.smallInfoView}>
       <Tooltip popover={<Text style={{ color: "#fff" }}>{priceText}</Text>}>
         <Text style={(styles.smallInfo, { color: "green" })}>
           {results.price}
@@ -43,7 +44,7 @@ const SmallInfoBoard = ({ priceText, results }) => {
           {results.review_count} reviews
         </Text>
       </TouchableOpacity>
-    </View>
+    </Animatable.View>
   );
 };
 
