@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   tag: {
     color: "#1DA1F2",
     fontSize: 15,
-    fontFamily: "Avenir-Oblique",
+    // fontFamily: "Avenir-Oblique",
     marginTop: 10,
     marginBottom: 10,
     opacity: 0.9,

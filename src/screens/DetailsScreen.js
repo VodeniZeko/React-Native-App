@@ -12,6 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "../../api/yelp";
 import SingleRestaurantDetails from "../../components/SingleRestaurantDetails";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function DetailsScreen({ route }) {
   const navigation = useNavigation();
@@ -55,12 +56,13 @@ export default function DetailsScreen({ route }) {
         <ActivityIndicator style={{ flex: 1 }} color="#1DA1F2" />
       ) : (
         <>
-          <View>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <SingleRestaurantDetails
               priceText={text}
               results={singleRestaurant}
             />
-          </View>
+          </ScrollView>
+
           <TouchableOpacity
             onPress={() => navigation.navigate("Home")}
             style={styles.icon}

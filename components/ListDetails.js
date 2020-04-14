@@ -36,16 +36,16 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 10,
-    fontSize: 13,
-    fontFamily: "Palatino"
+    fontSize: 13
+    // fontFamily: "Palatino"
   },
   name: {
     fontSize: 15,
     width: 200,
     fontWeight: "bold",
     paddingTop: 10,
-    paddingLeft: 10,
-    fontFamily: "Palatino"
+    paddingLeft: 10
+    // fontFamily: "Palatino"
   }
 });
 export default ListDetails;
