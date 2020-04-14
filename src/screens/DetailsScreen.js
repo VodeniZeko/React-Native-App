@@ -32,6 +32,23 @@ export default function DetailsScreen({ route }) {
   if (!singleRestaurant) {
     return null;
   }
+  ////checkinkg for price to populate the popupText for prices
+  var text = "";
+  const $ = singleRestaurant.price;
+  switch ($) {
+    case "$":
+      text = "Cost Effective";
+      break;
+    case "$$":
+      text = "Moderate";
+      break;
+    case "$$$":
+      text = "Go all out";
+      break;
+    default:
+      null;
+  }
+  //checkinkg for price to populate the popupText for prices
   return (
     <View style={styles.view}>
       {loading ? (
@@ -39,7 +56,10 @@ export default function DetailsScreen({ route }) {
       ) : (
         <>
           <View>
-            <SingleRestaurantDetails results={singleRestaurant} />
+            <SingleRestaurantDetails
+              priceText={text}
+              results={singleRestaurant}
+            />
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("Home")}

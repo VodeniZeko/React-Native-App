@@ -78,7 +78,7 @@ export default function ReviewsScreen(props) {
             renderItem={({ item }) => {
               return (
                 <View>
-                  <Text>REVIEWER HERE => {item.user.name}</Text>
+                  <Text>REVIEWER HERE => {item.text}</Text>
                 </View>
               );
             }}
