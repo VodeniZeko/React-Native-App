@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     alignSelf: "center",
-    padding: 10
+    padding: 10,
+    color: "#1DA1F2"
   },
   forward: {
     color: "#1DA1F2",

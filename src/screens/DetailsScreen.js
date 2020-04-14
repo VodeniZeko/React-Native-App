@@ -4,8 +4,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  FlatList,
-  Button,
   ActivityIndicator
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
