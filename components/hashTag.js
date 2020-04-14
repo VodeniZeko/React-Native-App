@@ -7,7 +7,7 @@ const HashTag = ({ results }) => {
       <FlatList
         horizontal={true}
         data={results.categories}
-        keyExtractor={each => each.id}
+        keyExtractor={each => each.alias}
         renderItem={({ item }) => {
           return (
             <Text style={styles.tag}>

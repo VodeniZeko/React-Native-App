@@ -3,14 +3,19 @@ import {
   View,
   Text,
   Image,
+  Button,
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  ImageBackground
+  ImageBackground,
+  Linking
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import axios from "../../api/yelp";
 import { useNavigation } from "@react-navigation/native";
+import { ListItem } from "react-native-elements";
+
 export default function ReviewsScreen(props) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +27,7 @@ export default function ReviewsScreen(props) {
     });
     setLoading(false);
   }, []);
-  console.log("yayayayayayyaya", reviews);
+  // console.log("1232132131313", reviews.length);
   return (
     <View style={styles.view}>
       <ImageBackground
@@ -34,15 +39,38 @@ export default function ReviewsScreen(props) {
         ) : (
           <FlatList
             data={reviews}
+            keyExtractor={x => x.id}
             renderItem={({ item }) => {
               return (
-                <View>
-                  <Text>REVIEWER HERE => {item.text}</Text>
-                </View>
+                <ListItem
+                  leftAvatar={{
+                    size: "large",
+                    source: { uri: item.user.image_url }
+                  }}
+                  containerStyle={{
+                    backgroundColor: "transparent",
+                    margin: 10
+                  }}
+                  title={item.user.name}
+                  titleStyle={{ fontSize: 15, paddingBottom: 5 }}
+                  subtitle={item.text}
+                  subtitleStyle={{ fontWeight: "bold", fontSize: 16 }}
+                />
               );
             }}
           />
         )}
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity onPress={() => Linking.openURL(reviews[0].url)}>
+            <Text
+              style={{ fontSize: 20, textAlign: "center", fontWeight: "100" }}
+            >
+              Click on
+              <Entypo style={{ color: "#CC0000" }} size={60} name="yelp" /> for
+              more reviews...
+            </Text>
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity
           onPress={() => navigation.navigate("Home")}
           style={styles.icon}
