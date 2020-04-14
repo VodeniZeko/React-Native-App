@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-
+import * as Animatable from "react-native-animatable";
 const HashTag = ({ results }) => {
   return (
-    <View style={styles.view}>
+    <Animatable.View style={styles.view} animation="fadeInLeft">
       <FlatList
         horizontal={true}
         data={results.categories}
-        keyExtractor={each => each.id}
+        keyExtractor={each => each.alias}
         renderItem={({ item }) => {
           return (
             <Text style={styles.tag}>
@@ -17,7 +17,7 @@ const HashTag = ({ results }) => {
           );
         }}
       />
-    </View>
+    </Animatable.View>
   );
 };
 
@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
   tag: {
     color: "#1DA1F2",
     fontSize: 15,
-    fontFamily: "Avenir-Oblique",
+    // fontFamily: "Avenir-Oblique",
     marginTop: 10,
     marginBottom: 10,
     opacity: 0.9,
+    padding: 3,
     textAlign: "center"
   }
 });

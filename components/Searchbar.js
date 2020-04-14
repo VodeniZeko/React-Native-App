@@ -1,8 +1,22 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  TextInput,
+  ActivityIndicator
+} from "react-native";
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+import { Feather } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+const SearchBar = ({
+  term,
+  onTermChange,
+  onTermSubmit,
+  searchNextApi,
+  fetchingData
+}) => {
   return (
     <View style={styles.view}>
       <Feather style={styles.icon} name="search" size={30} />
@@ -13,6 +27,17 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
         placeholder="What do you feel like eating ?"
         onEndEditing={onTermSubmit}
       />
+      <TouchableOpacity onPress={() => searchNextApi()} activeOpacity={0.9}>
+        {fetchingData ? (
+          <ActivityIndicator
+            style={styles.forward}
+            color="#1DA1F2"
+            size="large"
+          />
+        ) : (
+          <Entypo style={styles.icon} name="controller-next" size={30} />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
@@ -32,7 +57,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     alignSelf: "center",
-    padding: 10
+    padding: 10,
+    color: "#1DA1F2"
+  },
+  forward: {
+    color: "#1DA1F2",
+    paddingTop: 9
   }
 });
 export default SearchBar;

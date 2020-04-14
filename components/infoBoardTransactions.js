@@ -79,7 +79,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     padding: 5,
     opacity: 0.8,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    height: 60
+    // width: 140,
   }
 });
 
