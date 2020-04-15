@@ -35,7 +35,7 @@ const InfoBoardTransactions = ({ results }) => {
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-around"
+            justifyContent: "space-evenly"
           }}
         >
           <FlatList
@@ -76,12 +76,13 @@ const InfoBoardTransactions = ({ results }) => {
 const styles = StyleSheet.create({
   delivery: {
     // fontFamily: "Avenir-Oblique",
-    fontSize: 15,
-    padding: 5,
+    fontSize: 12,
+    padding: 10,
+    marginLeft: 25,
     opacity: 0.8,
     fontWeight: "bold",
-    height: 60
-    // width: 140,
+    flexDirection: "row",
+    width: 120
   }
 });
 

@@ -32,7 +32,7 @@ const SearchScreen = ({ navigation }) => {
       return res.price === price;
     });
   };
-  console.log(results);
+  // console.log(results);
   return (
     <View style={styles.view}>
       <SearchBar
@@ -48,25 +48,26 @@ const SearchScreen = ({ navigation }) => {
         {geoErrorMessage && <Text style={styles.err}>{geoErrorMessage}</Text>}
       </Text>
 
-      {results.length === 0 ? (
+      {/* {results.length === 0 ? (
         <OpeningScreen />
-      ) : (
-        <View>
-          {loading ? (
-            <ActivityIndicator
-              style={{ flex: 1 }}
-              size="large"
-              color="#1DA1F2"
-            />
-          ) : (
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <List results={filterPrice("$")} title="Cost Effective" />
-              <List results={filterPrice("$$")} title="Moderate" />
-              <List results={filterPrice("$$$")} title="Go all out" />
-            </ScrollView>
-          )}
-        </View>
-      )}
+      ) : ( */}
+      <View>
+        {loading ? (
+          // <ActivityIndicator
+          //   style={{ flex: 1 }}
+          //   size="large"
+          //   color="#1DA1F2"
+          // />
+          <OpeningScreen />
+        ) : (
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <List results={filterPrice("$")} title="Cost Effective" />
+            <List results={filterPrice("$$")} title="Moderate" />
+            <List results={filterPrice("$$$")} title="Go all out" />
+          </ScrollView>
+        )}
+      </View>
+      {/* )} */}
     </View>
   );
 };

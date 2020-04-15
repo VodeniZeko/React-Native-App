@@ -16,7 +16,7 @@ const InfoBoardPhone = ({ results }) => {
       {results.display_phone ? (
         <Text style={styles.addressInfo}>{results.display_phone}</Text>
       ) : (
-        <Text style={{ color: "blue", padding: 2 }}>sorry, no data</Text>
+        <Text style={{ color: "blue", paddingBottom: 2 }}>sorry, no data</Text>
       )}
     </View>
   );
