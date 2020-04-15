@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import SearchBar from "../../components/Searchbar";
 import useResults from "../../hooks/useResults";
-// import location from "../../hooks/location";
+import OpeningScreen from "./OpeningScreen";
 import List from "../../components/List";
 
 const SearchScreen = ({ navigation }) => {
@@ -32,7 +32,7 @@ const SearchScreen = ({ navigation }) => {
       return res.price === price;
     });
   };
-
+  console.log(results);
   return (
     <View style={styles.view}>
       <SearchBar
@@ -49,9 +49,7 @@ const SearchScreen = ({ navigation }) => {
       </Text>
 
       {results.length === 0 ? (
-        <View>
-          <Text>bladkllskjc</Text>
-        </View>
+        <OpeningScreen />
       ) : (
         <View>
           {loading ? (

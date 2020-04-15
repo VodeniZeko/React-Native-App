@@ -13,7 +13,11 @@ const InfoBoardPhone = ({ results }) => {
       />
 
       <Entypo name="chevron-down" />
-      <Text style={styles.addressInfo}>{results.display_phone}</Text>
+      {results.display_phone ? (
+        <Text style={styles.addressInfo}>{results.display_phone}</Text>
+      ) : (
+        <Text style={{ color: "blue", padding: 2 }}>sorry, no data</Text>
+      )}
     </View>
   );
 };
