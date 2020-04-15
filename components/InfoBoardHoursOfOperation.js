@@ -4,7 +4,19 @@ import { Entypo } from "@expo/vector-icons";
 // import HoursOverlay from "./hoursOverlay";
 
 const InfoBoardHoursOfOperation = ({ results }) => {
-  var vrijeme = results.hours[0].is_open_now;
+  if (!results.hours) {
+    return (vrijeme = (
+      <View style={{ alignItems: "center" }}>
+        <Entypo style={styles.hours} size={30} name="clock" />
+        <Text style={{ textAlign: "center", color: "blue", padding: 2 }}>
+          sorry, no data!
+        </Text>
+      </View>
+    ));
+  } else {
+    var vrijeme = results.hours[0].is_open_now;
+  }
+
   return (
     <View style={styles.view}>
       <View
