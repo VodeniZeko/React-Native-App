@@ -8,11 +8,15 @@ import {
 } from "react-native";
 import SearchBar from "../../components/Searchbar";
 import useResults from "../../hooks/useResults";
+// import location from "../../hooks/location";
 import List from "../../components/List";
 
 const SearchScreen = ({ navigation }) => {
   //custom hook below
   const [
+    // position,
+    located,
+    geoErrorMessage,
     searchApi,
     results,
     errorMessage,
@@ -20,6 +24,7 @@ const SearchScreen = ({ navigation }) => {
     searchNextApi,
     fetchingData
   ] = useResults();
+
   const [term, setTerm] = useState("");
 
   const filterPrice = price => {
@@ -39,17 +44,30 @@ const SearchScreen = ({ navigation }) => {
       />
 
       <Text>
-        {errorMessage ? <Text style={styles.err}>{errorMessage}</Text> : null}
+        {errorMessage && <Text style={styles.err}>{errorMessage}</Text>}
+        {geoErrorMessage && <Text style={styles.err}>{geoErrorMessage}</Text>}
       </Text>
 
-      {loading ? (
-        <ActivityIndicator style={{ flex: 1 }} size="large" color="#1DA1F2" />
+      {results.length === 0 ? (
+        <View>
+          <Text>bladkllskjc</Text>
+        </View>
       ) : (
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <List results={filterPrice("$")} title="Cost Effective" />
-          <List results={filterPrice("$$")} title="Moderate" />
-          <List results={filterPrice("$$$")} title="Go all out" />
-        </ScrollView>
+        <View>
+          {loading ? (
+            <ActivityIndicator
+              style={{ flex: 1 }}
+              size="large"
+              color="#1DA1F2"
+            />
+          ) : (
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <List results={filterPrice("$")} title="Cost Effective" />
+              <List results={filterPrice("$$")} title="Moderate" />
+              <List results={filterPrice("$$$")} title="Go all out" />
+            </ScrollView>
+          )}
+        </View>
       )}
     </View>
   );
