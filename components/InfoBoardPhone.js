@@ -1,20 +1,35 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import call from "react-native-phone-call";
 
+import {
+  View,
+  Linking,
+  TouchableOpacity,
+  Text,
+  StyleSheet
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 
 const InfoBoardPhone = ({ results }) => {
+  const number = results.display_phone;
+  const args = {
+    number: number, // String value with the number to call
+    prompt: true // Optional boolean property. Determines if the user should be prompt prior to the call
+  };
+
   return (
     <View style={{ alignItems: "center" }}>
-      <Entypo
-        style={{ paddingTop: 5, color: "green", opacity: 0.4 }}
-        size={30}
-        name="phone"
-      />
+      <TouchableOpacity onPress={() => call(args).catch(console.error)}>
+        <Entypo
+          style={{ paddingTop: 5, color: "green", opacity: 0.4 }}
+          size={30}
+          name="phone"
+        />
+      </TouchableOpacity>
 
       <Entypo name="chevron-down" />
       {results.display_phone ? (
-        <Text style={styles.addressInfo}>{results.display_phone}</Text>
+        <Text style={styles.addressInfo}>{number}</Text>
       ) : (
         <Text style={{ color: "blue", paddingBottom: 2 }}>sorry, no data</Text>
       )}
