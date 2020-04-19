@@ -51,7 +51,7 @@ export default function DetailsScreen({ route }) {
   return (
     <View style={styles.view}>
       {loading ? (
-        <ActivityIndicator style={{ flex: 1 }} color="#1DA1F2" />
+        <ActivityIndicator style={{ flex: 1 }} color="#7F7FFF" />
       ) : (
         <>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -65,7 +65,7 @@ export default function DetailsScreen({ route }) {
             onPress={() => navigation.navigate("Home")}
             style={styles.icon}
           >
-            <FontAwesome style={{ color: "#1DA1F2" }} name="home" size={30} />
+            <FontAwesome style={{ color: "#7F7FFF" }} name="home" size={30} />
           </TouchableOpacity>
         </>
       )}

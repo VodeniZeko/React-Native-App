@@ -30,7 +30,7 @@ export default function ModalScreen(props) {
         onPress={() => navigation.navigate("Home")}
         style={styles.icon}
       >
-        <FontAwesome style={{ color: "#1DA1F2" }} name="home" size={30} />
+        <FontAwesome style={{ color: "#7F7FFF" }} name="home" size={30} />
       </TouchableOpacity>
     </View>
   );

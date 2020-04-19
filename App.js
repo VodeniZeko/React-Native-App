@@ -13,8 +13,14 @@ const RootStack = createStackNavigator();
 function MainStackScreen() {
   return (
     <MainStack.Navigator>
-      <MainStack.Screen name="Home" component={SearchScreen} />
-      <MainStack.Screen name="Settings" component={SettingsScreen} />
+      <MainStack.Screen
+        name="Home"
+        options={{
+          tabBarVisible: false
+        }}
+        component={SearchScreen}
+      />
+      {/* <MainStack.Screen name="Settings" component={SettingsScreen} /> */}
     </MainStack.Navigator>
   );
 }
@@ -28,20 +34,44 @@ export default function App() {
           component={MainStackScreen}
           options={{
             headerShown: true,
-            headerStyle: {
-              // backgroundColor: "#f4511e"
-            },
             headerTitleStyle: {
-              // fontWeight: "bold",
-              color: "#1DA1F2"
-              // fontSize: 20
-              // fontFamily: "Palatino"
+              color: "#7F7FFF"
             }
           }}
         />
-        <RootStack.Screen name="Images" component={ModalScreen} />
-        <RootStack.Screen name="About" component={DetailsScreen} />
-        <RootStack.Screen name="Reviews" component={ReviewsScreen} />
+        <RootStack.Screen
+          name="Images"
+          options={{
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTitleStyle: {
+              color: "#7F7FFF"
+            }
+          }}
+          component={ModalScreen}
+        />
+        <RootStack.Screen
+          name="About"
+          options={{
+            headerBackTitleVisible: false,
+            headerShown: true,
+            headerTitleStyle: {
+              color: "#7F7FFF"
+            }
+          }}
+          component={DetailsScreen}
+        />
+        <RootStack.Screen
+          name="Reviews"
+          options={{
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTitleStyle: {
+              color: "#7F7FFF"
+            }
+          }}
+          component={ReviewsScreen}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );

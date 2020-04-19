@@ -41,6 +41,7 @@ const SearchScreen = ({ navigation }) => {
         onTermSubmit={() => searchApi(term)}
         searchNextApi={searchNextApi}
         fetchingData={fetchingData}
+        results={results}
       />
 
       <Text>
