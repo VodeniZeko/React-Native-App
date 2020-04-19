@@ -76,13 +76,15 @@ const InfoBoardTransactions = ({ results }) => {
 const styles = StyleSheet.create({
   delivery: {
     // fontFamily: "Avenir-Oblique",
-    fontSize: 12,
-    padding: 10,
-    marginLeft: 25,
+    fontSize: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    textAlign: "center",
+    // marginLeft: 25,
     opacity: 0.8,
     fontWeight: "bold",
     flexDirection: "row",
-    width: 120
+    width: 125
   }
 });
 
