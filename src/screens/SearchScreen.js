@@ -32,7 +32,7 @@ const SearchScreen = ({ navigation }) => {
       return res.price === price;
     });
   };
-  // console.log(results);
+
   return (
     <View style={styles.view}>
       <SearchBar
@@ -47,17 +47,8 @@ const SearchScreen = ({ navigation }) => {
         {errorMessage && <Text style={styles.err}>{errorMessage}</Text>}
         {geoErrorMessage && <Text style={styles.err}>{geoErrorMessage}</Text>}
       </Text>
-
-      {/* {results.length === 0 ? (
-        <OpeningScreen />
-      ) : ( */}
       <View>
         {loading ? (
-          // <ActivityIndicator
-          //   style={{ flex: 1 }}
-          //   size="large"
-          //   color="#1DA1F2"
-          // />
           <OpeningScreen />
         ) : (
           <ScrollView showsVerticalScrollIndicator={false}>

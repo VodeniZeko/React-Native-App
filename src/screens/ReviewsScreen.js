@@ -5,15 +5,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  ImageBackground,
-  ScrollView
+  ImageBackground
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "../../api/yelp";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
 import LeaveAppModal from "../../components/leaveAppModal";
-// import { Tooltip } from "react-native-elements";
+import { Rating } from "react-native-elements";
 
 export default function ReviewsScreen(props) {
   const [reviews, setReviews] = useState([]);
@@ -21,13 +20,14 @@ export default function ReviewsScreen(props) {
   const id = props.route.params.id;
   const url = reviews[0];
   const navigation = useNavigation();
-
+  const { rating } = reviews;
   useEffect(() => {
     axios.get(`${id}/reviews`).then(res => {
       setReviews(res.data.reviews);
     });
     setLoading(false);
   }, []);
+  console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXX", reviews);
 
   return (
     <View style={styles.view}>
@@ -51,10 +51,23 @@ export default function ReviewsScreen(props) {
                   containerStyle={{
                     backgroundColor: "transparent"
                   }}
-                  title={item.user.name}
+                  title={
+                    <View style={styles.titleView}>
+                      <Text style={{ fontSize: 18 }}>{item.user.name}</Text>
+
+                      <Rating
+                        fractions={1}
+                        imageSize={15}
+                        readonly
+                        startingValue={rating}
+                        style={styles.rating}
+                      />
+                    </View>
+                  }
                   titleStyle={{ fontSize: 15, paddingBottom: 5 }}
                   subtitle={item.text}
                   subtitleStyle={{ fontWeight: "bold", fontSize: 15 }}
+                  bottomDivider
                 />
               );
             }}
@@ -77,6 +90,14 @@ export default function ReviewsScreen(props) {
 const styles = StyleSheet.create({
   view: {
     flex: 1
+  },
+  titleView: {
+    alignItems: "center",
+    alignSelf: "flex-start",
+    paddingBottom: 10
+  },
+  rating: {
+    alignSelf: "flex-start"
   },
   image: {
     flex: 1,

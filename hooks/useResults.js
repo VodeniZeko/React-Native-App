@@ -35,8 +35,9 @@ export default () => {
       const res = await axios.get("/search", {
         params: {
           limit: 50,
-          latitude: position.lat,
-          longitude: position.long,
+          location: "seattle",
+          // latitude: position.lat,
+          // longitude: position.long,
           offset: offset,
           term: initialSearch
         }
@@ -70,15 +71,8 @@ export default () => {
   };
 
   useEffect(() => {
-    getLocation();
-    // return () => {
-    //   searchApi();
-    // };
+    // getLocation();
   }, []);
-  // useEffect(() => {
-  //     searchApi("beef");
-  // }, []);
-
   return [
     located,
     // position,
