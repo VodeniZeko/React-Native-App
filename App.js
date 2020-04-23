@@ -35,7 +35,8 @@ export default function App() {
           options={{
             headerShown: true,
             headerTitleStyle: {
-              color: "#7F7FFF"
+              color: "#006400",
+              opacity: 0.8
             }
           }}
         />
@@ -45,7 +46,8 @@ export default function App() {
             headerShown: true,
             headerBackTitleVisible: false,
             headerTitleStyle: {
-              color: "#7F7FFF"
+              color: "#006400",
+              opacity: 0.8
             }
           }}
           component={ModalScreen}
@@ -56,7 +58,8 @@ export default function App() {
             headerBackTitleVisible: false,
             headerShown: true,
             headerTitleStyle: {
-              color: "#7F7FFF"
+              color: "#006400",
+              opacity: 0.8
             }
           }}
           component={DetailsScreen}
@@ -67,7 +70,8 @@ export default function App() {
             headerShown: true,
             headerBackTitleVisible: false,
             headerTitleStyle: {
-              color: "#7F7FFF"
+              color: "#006400",
+              opacity: 0.8
             }
           }}
           component={ReviewsScreen}
