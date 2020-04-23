@@ -41,7 +41,6 @@ export default function ReviewsScreen(props) {
             data={reviews}
             keyExtractor={x => x.id}
             renderItem={({ item }) => {
-              console.log(item);
               return (
                 <ListItem
                   leftAvatar={{
