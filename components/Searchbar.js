@@ -11,6 +11,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 const SearchBar = ({
+  results,
   term,
   onTermChange,
   onTermSubmit,
@@ -28,15 +29,17 @@ const SearchBar = ({
         onEndEditing={onTermSubmit}
       />
       <TouchableOpacity onPress={() => searchNextApi()} activeOpacity={0.9}>
-        {fetchingData ? (
-          <ActivityIndicator
-            style={styles.forward}
-            color="#1DA1F2"
-            size="large"
-          />
-        ) : (
-          <Entypo style={styles.icon} name="controller-next" size={30} />
-        )}
+        {results.length > 0 ? (
+          fetchingData ? (
+            <ActivityIndicator
+              style={styles.forward}
+              color="#7F7FFF"
+              size="large"
+            />
+          ) : (
+            <Entypo style={styles.icon} name="controller-next" size={30} />
+          )
+        ) : null}
       </TouchableOpacity>
     </View>
   );
@@ -58,10 +61,10 @@ const styles = StyleSheet.create({
   icon: {
     alignSelf: "center",
     padding: 10,
-    color: "#1DA1F2"
+    color: "#7F7FFF"
   },
   forward: {
-    color: "#1DA1F2",
+    color: "#7F7FFF",
     paddingTop: 9
   }
 });

@@ -27,6 +27,10 @@ const SearchScreen = ({ navigation }) => {
 
   const [term, setTerm] = useState("");
 
+  const _goSearch = term => {
+    searchApi(term);
+    setTerm("");
+  };
   const filterPrice = price => {
     return results.filter(res => {
       return res.price === price;
@@ -38,9 +42,10 @@ const SearchScreen = ({ navigation }) => {
       <SearchBar
         term={term}
         onTermChange={newTerm => setTerm(newTerm)}
-        onTermSubmit={() => searchApi(term)}
+        onTermSubmit={() => -_goSearch()}
         searchNextApi={searchNextApi}
         fetchingData={fetchingData}
+        results={results}
       />
 
       <Text>

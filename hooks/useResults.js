@@ -35,6 +35,7 @@ export default () => {
       const res = await axios.get("/search", {
         params: {
           limit: 50,
+          // TODO: change to device location
           location: "seattle",
           // latitude: position.lat,
           // longitude: position.long,
@@ -58,8 +59,10 @@ export default () => {
           limit: 50,
           offset: offset,
           term: initialSearch,
-          latitude: position.lat,
-          longitude: position.long,
+          // TODO: change to device location
+          location: "seattle",
+          // latitude: position.lat,
+          // longitude: position.long,
           radius: 8046
         }
       });
