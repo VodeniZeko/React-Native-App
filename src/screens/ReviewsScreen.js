@@ -20,14 +20,13 @@ export default function ReviewsScreen(props) {
   const id = props.route.params.id;
   const url = reviews[0];
   const navigation = useNavigation();
-  const { rating } = reviews;
+
   useEffect(() => {
     axios.get(`${id}/reviews`).then(res => {
       setReviews(res.data.reviews);
     });
     setLoading(false);
   }, []);
-  // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXX", reviews);
 
   return (
     <View style={styles.view}>
@@ -42,6 +41,7 @@ export default function ReviewsScreen(props) {
             data={reviews}
             keyExtractor={x => x.id}
             renderItem={({ item }) => {
+              console.log(item);
               return (
                 <ListItem
                   leftAvatar={{
@@ -59,7 +59,7 @@ export default function ReviewsScreen(props) {
                         fractions={1}
                         imageSize={15}
                         readonly
-                        startingValue={rating}
+                        startingValue={item.rating}
                         style={styles.rating}
                       />
                     </View>
@@ -97,7 +97,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   rating: {
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
+    marginTop: 5
   },
   image: {
     flex: 1,
