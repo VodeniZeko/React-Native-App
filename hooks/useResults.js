@@ -36,9 +36,9 @@ export default () => {
         params: {
           limit: 50,
           // TODO: change to device location
-          location: "seattle",
-          // latitude: position.lat,
-          // longitude: position.long,
+          // location: "seattle",
+          latitude: position.lat,
+          longitude: position.long,
           offset: offset,
           term: initialSearch
         }
@@ -60,9 +60,9 @@ export default () => {
           offset: offset,
           term: initialSearch,
           // TODO: change to device location
-          location: "seattle",
-          // latitude: position.lat,
-          // longitude: position.long,
+          // location: "seattle",
+          latitude: position.lat,
+          longitude: position.long,
           radius: 8046
         }
       });
@@ -74,7 +74,7 @@ export default () => {
   };
 
   useEffect(() => {
-    // getLocation();
+    getLocation();
   }, []);
   return [
     located,
